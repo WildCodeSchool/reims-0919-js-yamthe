@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import render_template
 from flask import request, redirect, url_for
+import os
 
 app = Flask(__name__)
 
@@ -10,15 +11,22 @@ def index():
     return "hello World!"
 
 
-@app.route('/success/<name>')
+@app.route('/success')
 def success(name):
-    return 'welcome %s' % name
+    return '%s' % name
 
 
 @app.route('/convert', methods=['POST'])
 def login():
-    user = request.form['name']
-    return redirect(url_for('success', name=user))
+    text = request.form['text']
+    file = open("data.md", "w")
+    file.write(text)
+    file.close()
+    os.system("python -m markdown -x codehilite data.md > body.html")
+    secoundfile = open("body.html", "r")
+    resultinhtml = secoundfile.read()
+    secoundfile.close()
+    return resultinhtml
 
 
 def page_not_found(e):
