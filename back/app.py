@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request, redirect, url_for
 
 app = Flask(__name__)
 
@@ -7,6 +8,17 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return "hello World!"
+
+
+@app.route('/success/<name>')
+def success(name):
+    return 'welcome %s' % name
+
+
+@app.route('/convert', methods=['POST'])
+def login():
+    user = request.form['name']
+    return redirect(url_for('success', name=user))
 
 
 def page_not_found(e):
