@@ -11,11 +11,6 @@ def index():
     return "hello World!"
 
 
-@app.route('/success')
-def success(name):
-    return '%s' % name
-
-
 @app.route('/convert', methods=['POST'])
 def login():
     text = request.form['text']
@@ -23,7 +18,7 @@ def login():
     file.write(text)
     file.close()
     os.system("python -m markdown -x codehilite data.md > body.html")
-    secoundfile = open("body.html", "r")
+    secondfile = open("body.html", "r")
     resultinhtml = secoundfile.read()
     secoundfile.close()
     return resultinhtml
