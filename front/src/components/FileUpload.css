@@ -1,0 +1,14 @@
+#fileUploadForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 20%;
+  height: 14vh;
+  margin: 1% auto;
+}
+
+#fileUploadForm label {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  background-color: lightgray;
+  border-radius: 3px;
+}
