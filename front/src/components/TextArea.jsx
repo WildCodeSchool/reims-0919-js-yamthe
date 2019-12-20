@@ -324,7 +324,13 @@ export default class TextArea extends React.Component {
     return (
       <>
         {this.state.html ? (
-          <textarea name="yeet" id="yeet" cols="30" row="10">
+          <textarea
+            name="yeet"
+            id="yeet"
+            cols="30"
+            row="10"
+            className="resulthtml"
+          >
             {this.state.html}
           </textarea>
         ) : (
