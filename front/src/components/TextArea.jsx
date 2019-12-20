@@ -9,7 +9,8 @@ export default class TextArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editor: ''
+      editor: '',
+      html: null
     };
   }
 
@@ -28,7 +29,7 @@ export default class TextArea extends React.Component {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
       .then(res => {
-        console.log(res);
+        this.setState({ html: res.data });
       })
       .catch(res => {
         console.log(res);
@@ -322,10 +323,17 @@ export default class TextArea extends React.Component {
   render() {
     return (
       <>
-        <ReactMde
-          value={this.state.editor}
-          onChange={this.monitorEditorChanges}
-        />
+        {this.state.html ? (
+          <textarea name="yeet" id="yeet" cols="30" row="10">
+            {this.state.html}
+          </textarea>
+        ) : (
+          <ReactMde
+            value={this.state.editor}
+            onChange={this.monitorEditorChanges}
+            l18n={{ write: 'Write', preview: '' }}
+          />
+        )}
         <Highlighter
           highlightClassName="YourHighlightClass"
           searchWords={[this.keyword(this.state.editor)]}

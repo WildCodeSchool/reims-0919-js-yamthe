@@ -1,8 +1,11 @@
 from flask import Flask
 from flask import render_template, request, redirect, url_for, make_response
+from flask_cors import CORS
 import os
 
+
 app = Flask(__name__)
+CORS(app)
 
 
 def transform(text_file_contents):
