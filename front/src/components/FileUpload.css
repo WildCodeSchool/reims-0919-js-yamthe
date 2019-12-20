@@ -4,7 +4,8 @@
   justify-content: space-evenly;
   width: 20%;
   height: 14vh;
-  margin: 1% auto;
+  margin: 0 auto;
+  margin-top: 5%;
 }
 
 #fileUploadForm label {
